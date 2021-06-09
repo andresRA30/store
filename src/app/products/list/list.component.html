@@ -1,0 +1,43 @@
+<app-cart (onLow)="lowToHigh()" (onHigh)="HighToLow()"></app-cart>
+
+<div class="container">
+    <div class="p-grid">
+        <div *ngFor="let product of products; let i =index" class="p-col-3">
+            <p-table [value]="products">
+
+            </p-table>
+            <p-fieldset legend="Hide Product" [toggleable]="true">
+                <p-card class="title" header="{{product.name|titlecase}}">
+
+                    <hr>
+                    <ng-template pTemplate="subtitles">
+                        <img [src]="product.media.source" class="product-image p-mt-4" alt="">
+
+                    </ng-template>
+                    <ng-template pTemplate="footer">
+
+                        {{product.price.formatted_with_symbol}}
+                        <div class="p-fluid p-formgrid p-grid p-mt-4">
+
+                            <div class=" p-col-2 p-md-4">
+
+                                <p-inputNumber ngModel #quantity mode="decimal" [showButtons]="true"
+                                    inputId="minmax-buttons" [min]="1" [max]="100" #myDiv>
+                                </p-inputNumber>
+
+
+                            </div>
+                            <div class="p-col-7 p-md-4">
+                                <button pButton (click)="Add(product.id,quantity.value)" label="Add to cart"></button>
+                            </div>
+
+
+                        </div>
+
+                    </ng-template>
+
+                </p-card>
+            </p-fieldset>
+        </div>
+    </div>
+</div>

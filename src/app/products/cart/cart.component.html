@@ -1,0 +1,32 @@
+<div class="p-col-5">
+    <p-card class="title" header="Shopping Cart">
+        <hr>
+        <ng-template pTemplate="subtitles">
+            <h2>Total: {{total}}</h2>
+            <hr>
+            <h3>Item bought:</h3>
+            <div *ngFor="let item of items">
+
+                {{item.name}} - {{item.quantity}} pcs
+
+                <button pButton (click)="delete(item)" pRipple type="button" icon="pi pi-times"
+                    class="p-button-rounded p-button-danger p-button-text"></button>
+
+            </div>
+        </ng-template>
+        <ng-template pTemplate="footer">
+            <div class="container p-fluid p-formgrid p-grid p-mt-4">
+                <div class=" p-col-3 p-md-4">
+                    <button pButton (click)="lowToHigh()" icon="pi pi-sort" label="Price low to high"
+                        class="p-mr-1 p-button-success"></button>
+                </div>
+
+                <div class=" p-col-2 p-md-4">
+                    <button pButton (click)="HighToLow()" icon="pi pi-sort" label="Price high to low"
+                        class="p-mr-1 p-button-warning"></button>
+                </div>
+
+            </div>
+        </ng-template>
+    </p-card>
+</div>
